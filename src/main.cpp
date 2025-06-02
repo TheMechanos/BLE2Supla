@@ -11,7 +11,7 @@ void setup() {
 
     scanner.init();
 
-    scanner.addSensor("DC:DA:0C:22:AB:BD", [](String MAC, JsonObject data){
+    scanner.addSensor("A4:C1:38:??:??:??", [](String MAC, JsonObject data){
         serializeJson(data, Serial);
         Serial.println("");
     });
