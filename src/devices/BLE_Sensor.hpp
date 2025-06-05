@@ -5,18 +5,20 @@
 
 class BLE_Sensor {
 public:
-    enum Type { TermoAndHum, Thermo, Humidity, COUNT };
+    enum Type { TermoAndHum, Thermo, Humidity, Open, COUNT };
 
     inline static const char* TYPE_CODES[Type::COUNT] = {
         [Type::TermoAndHum] = "BLET_TH",
         [Type::Thermo] = "BLET_T",
         [Type::Humidity] = "BLET_H",
+        [Type::Open] = "BLET_OPEN",
     };
 
     inline static const char* TYPE_LABEL[Type::COUNT] = {
         [Type::TermoAndHum] = "Temperatura & Wilgotność",
         [Type::Thermo] = "Temperatura",
         [Type::Humidity] = "Wilgotność",
+        [Type::Open] = "Czujnik Otwarcia",
     };
 
 

@@ -1,13 +1,13 @@
 #pragma once
 
 #include <supla/network/web_sender.h>
-#include <supla/storage/storage.h>
-// #include <supla/storage/littlefs_config.h>
+#include <supla/storage/config.h>
 
 #include <devices/BLE_H_Sensor.hpp>
 #include <devices/BLE_Sensor.hpp>
 #include <devices/BLE_TH_Sensor.hpp>
 #include <devices/BLE_T_Sensor.hpp>
+#include <devices/BLE_Open_Sensor.hpp>
 
 class BLE_Sensor_Factory {
 public:
@@ -22,6 +22,9 @@ public:
 
         case BLE_Sensor::Type::Humidity:
             return new BLE_H_Sensor(mac, scanner, validTimeMs);
+
+        case BLE_Sensor::Type::Open:
+            return new BLE_Open_Sensor(mac, scanner, validTimeMs);
         }
 
         return nullptr;

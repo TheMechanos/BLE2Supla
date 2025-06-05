@@ -1,6 +1,6 @@
 #pragma once
 
-#define MAX_SENSORS_COUNT 5
+#define MAX_SENSORS_COUNT 16
 #define DEVICE_NAME "abcd" //"BLE2SUPLA"
 
 
