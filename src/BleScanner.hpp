@@ -1,5 +1,6 @@
 #pragma once
 #include <esp_log.h>
+#include <supla/log_wrapper.h>
 
 #define ARDUINOJSON_USE_LONG_LONG 1
 #include <ArduinoJson.h>
@@ -28,12 +29,13 @@ public:
 private:
     constexpr static const bool debugMode = false;
     constexpr static const char* TAG = "BleScanner";
+    constexpr static const size_t MAX_SENSORS = MAX_SENSORS_COUNT * 5;
 
     struct Callback_t {
         CallbackFun_t cb;
         String ID;
     };
-    Callback_t sensorsID[MAX_SENSORS_COUNT];
+    Callback_t sensorsID[MAX_SENSORS];
 
 
     String hexifyString(std::string deviceServiceData);

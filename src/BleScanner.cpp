@@ -2,7 +2,7 @@
 
 
 BleScanner::BleScanner() {
-    for (size_t q = 0; q < MAX_SENSORS_COUNT; q++) {
+    for (size_t q = 0; q < MAX_SENSORS; q++) {
         sensorsID[q].cb = nullptr;
         sensorsID[q].ID.clear();
     }
@@ -33,7 +33,9 @@ void BleScanner::iterate() {
         firstScan = false;
 
         pBLEScan->start(scanTimeMillis);
-        Serial.println("Staring scan!");
+        
+        if(debugMode)
+            printf("BLE Scanner: Starting Scan!\n");
     }
 }
 
@@ -52,7 +54,7 @@ void BleScanner::addSensor(String ID, CallbackFun_t cb) {
         return;
     }
 
-    for (size_t q = 0; q < MAX_SENSORS_COUNT; q++) {
+    for (size_t q = 0; q < MAX_SENSORS; q++) {
         if (sensorsID[q].cb == nullptr) {
             sensorsID[q].cb = cb;
             sensorsID[q].ID = ID.c_str();
@@ -83,17 +85,16 @@ void BleScanner::onResult(const NimBLEAdvertisedDevice* advertisedDevice) {
     String mac_adress = advertisedDevice->getAddress().toString().c_str();
     mac_adress.toUpperCase();
 
-    Callback_t* sensor = nullptr;
+    // Callback_t* sensor = nullptr;
+    // for (size_t q = 0; q < MAX_SENSORS; q++) {
+    //     if (sensorsID[q].ID.length() == 0)
+    //         continue;
+    //     if (MAC::compare(mac_adress, sensorsID[q].ID))
+    //         sensor = &sensorsID[q];
+    // }
 
-    for (size_t q = 0; q < MAX_SENSORS_COUNT; q++) {
-        if (sensorsID[q].ID.length() == 0)
-            continue;
-        if (MAC::compare(mac_adress, sensorsID[q].ID))
-            sensor = &sensorsID[q];
-    }
-
-    if (sensor == nullptr && !debugMode)
-        return;
+    // if (sensor == nullptr && !debugMode)
+    //     return;
 
 
     BLEdata["id"] = (char*)mac_adress.c_str();
@@ -131,7 +132,14 @@ void BleScanner::onResult(const NimBLEAdvertisedDevice* advertisedDevice) {
             Serial.println("\n-------------------------------------------------------------------------------------------");
         }
 
-        if (sensor != nullptr)
-            sensor->cb(sensor->ID, BLEdata);
+        for (size_t q = 0; q < MAX_SENSORS; q++) {
+            if (sensorsID[q].ID.length() == 0)
+                continue;
+            if (MAC::compare(mac_adress, sensorsID[q].ID)) {
+                if (sensorsID[q].cb != nullptr) {
+                    sensorsID[q].cb(sensorsID[q].ID, BLEdata);
+                }
+            }
+        }
     }
 }
