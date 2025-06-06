@@ -27,20 +27,20 @@
 #include <supla/control/relay.h>
 #include <supla/control/roller_shutter.h>
 
-#include <supla/device/supla_ca_cert.h>
 #include <supla/device/status_led.h>
+#include <supla/device/supla_ca_cert.h>
 
 #include <supla/storage/eeprom.h>
 #include <supla/storage/littlefs_config.h>
 
 
-#include <html/DeviceConfigurator.hpp>
 #include <devices/BLE_Sensor_Factory.hpp>
+#include <html/DeviceConfigurator.hpp>
 
 
 Supla::ESPWifi wifi;
 // Supla::Eeprom eeprom;
-Supla::LittleFsConfig configSupla;
+Supla::LittleFsConfig configSupla(1024 * 10);
 
 Supla::Device::StatusLed statusLed(GPIO_LED_NUM, GPIO_LED_INV); // inverted state
 Supla::Control::Button cfgButton(GPIO_CFG_NUM, GPIO_CFG_PULL, GPIO_CFG_INVERT);
