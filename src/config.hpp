@@ -1,8 +1,9 @@
 #pragma once
 
-#define MAX_SENSORS_COUNT 16
-#define DEVICE_NAME "abcd" //"BLE2SUPLA"
+#define MAX_DEVICES_COUNT 16
+#define MAX_SENSORS_COUNT MAX_DEVICES_COUNT * 3
 
+#define DEVICE_NAME "BLE2SUPLA"
 
 #define BLE_RSSI_MIN -110
 #define BLE_RSSI_MAX -35

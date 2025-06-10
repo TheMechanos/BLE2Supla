@@ -43,7 +43,7 @@ void initHtml() {
     new Supla::Html::ProtocolParameters;
     new Supla::Html::StatusLedParameters;
 
-    bleCfg = new Supla::Html::DeviceConfigurator(MAX_SENSORS_COUNT);
+    bleCfg = new Supla::Html::DeviceConfigurator(MAX_DEVICES_COUNT);
 
     auto setScannerParams = []() {
         printf("BLE Scanning params: %u / %u [s]\n", bleCfg->getScanTime(), bleCfg->getScanInterval());

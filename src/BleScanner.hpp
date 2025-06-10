@@ -29,7 +29,7 @@ public:
 private:
     constexpr static const bool debugMode = false;
     constexpr static const char* TAG = "BleScanner";
-    constexpr static const size_t MAX_SENSORS = MAX_SENSORS_COUNT * 5;
+    constexpr static const size_t MAX_SENSORS = MAX_SENSORS_COUNT;
 
     struct Callback_t {
         CallbackFun_t cb;
@@ -38,6 +38,7 @@ private:
     Callback_t sensorsID[MAX_SENSORS];
 
 
+    
     String hexifyString(std::string deviceServiceData);
 
 
