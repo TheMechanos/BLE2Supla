@@ -1,7 +1,17 @@
 # BLE 2 Supla Gateway
 
 This software turns an ESP32 into a BLE sensor-to-Supla gateway. The project uses [Theengs Decoder](https://github.com/theengs/decoder).  
-Supported devices list: [https://decoder.theengs.io/devices/devices.html](https://decoder.theengs.io/devices/devices.html)
+\
+It is possible to operate the device: [https://decoder.theengs.io/devices/devices.html](https://decoder.theengs.io/devices/devices.html)
+
+
+## Supported Supla Devices
+
+* Thermometer & Hygrometer
+* Thermometer
+* Hygrometer
+* Open Sensor
+
 
 ## Installation
 
