@@ -23,7 +23,7 @@ It is possible to operate the device: [https://decoder.theengs.io/devices/device
 4. Select the downloaded file.
 5. Set the Flash Address to 0x0000.
 6. Click Program.
-
+![Flashing Screen](https://github.com/TheMechanos/BLE2Supla/blob/main/img/Flashing.png?raw=true)
 ### PlatformIO
 
 1. Clone the project: `git clone https://github.com/TheMechanos/BLE2Supla.git`
@@ -37,3 +37,5 @@ Connect to the Wi-Fi network created by the device, named "BLE2SUPLA...".
 Open a browser and go to 192.168.4.1. Configure your Wi-Fi network and Supla Cloud account credentials.
 Select how many devices the gateway should handle, enter their BLE addresses, and choose which sensor types should be generated in Supla.
 Save the configuration and test the setup. 😊
+
+![Configuration Screen](https://github.com/TheMechanos/BLE2Supla/blob/main/img/Config.png?raw=true)
