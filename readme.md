@@ -21,13 +21,15 @@ It is possible to operate the device: [https://decoder.theengs.io/devices/device
 2. Open https://espressif.github.io/esptool-js/
 3. Connect to the ESP32 chip.
 4. Select the downloaded file.
-5. Set the Flash Address to 0x1000.
+5. Set the Flash Address to 0x0000.
 6. Click Program.
 
 ### PlatformIO
 
 1. Clone the project: `git clone https://github.com/TheMechanos/BLE2Supla.git`
 2. Build and upload using PlatformIO.
+
+
 
 ## Usage
 

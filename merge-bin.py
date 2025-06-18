@@ -17,7 +17,7 @@ def merge_bin(source, target, env):
 
     # Lista (offset, plik) do mergowania
     segments = [
-        ("0x1000", build_dir / "bootloader.bin"),
+        ("0x0000", build_dir / "bootloader.bin"),
         ("0x8000", build_dir / "partitions.bin"),
         ("0x10000", build_dir / "firmware.bin")
     ]
@@ -31,7 +31,6 @@ def merge_bin(source, target, env):
         "--flash_mode", "dio",
         "--flash_freq", "40m",
         "--flash_size", "4MB",
-        "--target-offset", "0x1000"
     ]
 
     # Dodaj offsety i ścieżki plików
