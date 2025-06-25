@@ -14,6 +14,7 @@ It is possible to operate the device: [https://decoder.theengs.io/devices/device
 
 
 ## Installation
+There are two target chips, ESP32-C3 and ESP32-S3 and two modes Normal and Debug(filename ending -DBG). Debug version is logging all data received from BLE, this will be useful to identify and add new devices 
 
 ### Web Installer
 
