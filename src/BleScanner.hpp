@@ -27,7 +27,6 @@ public:
     void setScanTiming(unsigned long scanTimeMillis, unsigned long scanIntervalMillis);
 
 private:
-    constexpr static const bool debugMode = false;
     constexpr static const char* TAG = "BleScanner";
     constexpr static const size_t MAX_SENSORS = MAX_SENSORS_COUNT;
 
@@ -38,7 +37,7 @@ private:
     Callback_t sensorsID[MAX_SENSORS];
 
 
-    
+
     String hexifyString(std::string deviceServiceData);
 
 

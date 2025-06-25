@@ -33,9 +33,10 @@ void BleScanner::iterate() {
         firstScan = false;
 
         pBLEScan->start(scanTimeMillis);
-        
-        if(debugMode)
-            printf("BLE Scanner: Starting Scan!\n");
+
+#ifdef APP_DEBUG
+        printf("BLE Scanner: Starting Scan!\n");
+#endif
     }
 }
 
@@ -85,17 +86,6 @@ void BleScanner::onResult(const NimBLEAdvertisedDevice* advertisedDevice) {
     String mac_adress = advertisedDevice->getAddress().toString().c_str();
     mac_adress.toUpperCase();
 
-    // Callback_t* sensor = nullptr;
-    // for (size_t q = 0; q < MAX_SENSORS; q++) {
-    //     if (sensorsID[q].ID.length() == 0)
-    //         continue;
-    //     if (MAC::compare(mac_adress, sensorsID[q].ID))
-    //         sensor = &sensorsID[q];
-    // }
-
-    // if (sensor == nullptr && !debugMode)
-    //     return;
-
 
     BLEdata["id"] = (char*)mac_adress.c_str();
     BLEdata["rssi"] = (int)advertisedDevice->getRSSI();
@@ -118,6 +108,12 @@ void BleScanner::onResult(const NimBLEAdvertisedDevice* advertisedDevice) {
     }
 
     if (decoder.decodeBLEJson(BLEdata)) {
+
+#ifdef APP_DEBUG
+        serializeJson(BLEdata, Serial);
+        Serial.println("\n-------------------------------------------------------------------------------------------");
+#endif
+
         BLEdata.remove("manufacturerdata");
         BLEdata.remove("servicedata");
         BLEdata.remove("servicedatauuid");
@@ -126,11 +122,6 @@ void BleScanner::onResult(const NimBLEAdvertisedDevice* advertisedDevice) {
         BLEdata.remove("acts");
         BLEdata.remove("cont");
         BLEdata.remove("track");
-
-        if (debugMode) {
-            serializeJson(BLEdata, Serial);
-            Serial.println("\n-------------------------------------------------------------------------------------------");
-        }
 
         for (size_t q = 0; q < MAX_SENSORS; q++) {
             if (sensorsID[q].ID.length() == 0)

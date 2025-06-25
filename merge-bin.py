@@ -48,8 +48,8 @@ def merge_bin(source, target, env):
         print("[merge_bin] esptool merge_bin failed!")
         env.Exit(1)
         
-        
-    shutil.copyfile(output_bin, "dist/BLE2SUPLA_"+ver+"_"+env["BOARD_MCU"]+".bin")
+    
+    shutil.copyfile(output_bin, "dist/BLE2SUPLA_"+ver+"_"+env["PIOENV"]+".bin")
 
 # Wywołaj po wygenerowaniu firmware.bin
 env.AddPostAction("$BUILD_DIR/firmware.bin", merge_bin)

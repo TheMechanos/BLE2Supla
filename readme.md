@@ -39,3 +39,9 @@ Select how many devices the gateway should handle, enter their BLE addresses, an
 Save the configuration and test the setup. 😊
 
 ![Configuration Screen](https://github.com/TheMechanos/BLE2Supla/blob/main/img/Config.png?raw=true)
+
+
+## Changelog
+
+### V1.0.1
+-Add debug mode to list all decoded BLE Devices to log
